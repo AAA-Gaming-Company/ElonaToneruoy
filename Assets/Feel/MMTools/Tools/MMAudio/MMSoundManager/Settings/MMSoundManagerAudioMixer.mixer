@@ -1,5 +1,23 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!244 &-6728944475397555707
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 026fd22c1c8a5db4698f4abe92ec1a46
+  m_EffectName: Highpass
+  m_MixLevel: dec2826643d1dbb46b6ddeb751488cc6
+  m_Parameters:
+  - m_ParameterName: Cutoff freq
+    m_GUID: e1621d25e9af93f42be5f9116d15e351
+  - m_ParameterName: Resonance
+    m_GUID: 3726935b3d04ae247a5fcc20292ef635
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &-4576635800020724519
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -48,6 +66,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: -4576635800020724519}
+  - {fileID: -6728944475397555707}
   m_UserColorIndex: 3
   m_Mute: 0
   m_Solo: 0
@@ -153,6 +172,7 @@ AudioMixerSnapshotController:
     0f44e1c042b36e646938a885f8d57ea3: 0
     c2e19a843805c3a4ca00e7acf8b2ba84: 0
     534e52a4a366075458077c0854e78569: 0
+    e1621d25e9af93f42be5f9116d15e351: 2644
     6b54e6bee2cbfc5408b1e9a970814b35: 0
   m_TransitionOverrides: {}
 --- !u!244 &5731139238567193833

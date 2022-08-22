@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using MoreMountains.Feedbacks;
 
 public class EnemyBrain : MonoBehaviour
 {
@@ -9,13 +10,19 @@ public class EnemyBrain : MonoBehaviour
     AIPath path;
     bool canAttack = true;
     public LayerMask friendMask;
+    public Animator animator;
+    public SpriteRenderer spriteRenderer;
+    public MMF_Player eatFeedback;
 
     public void Start()
     {
         aIDestinationSetter = GetComponent<AIDestinationSetter>();
+        
         InvokeRepeating("ScanForTargets", 1f, 1f);
         InvokeRepeating("Attack", 1f, 1f);
+        StartCoroutine(AnimateWalk());
         path = GetComponent<AIPath>();
+
     }
 
     public void ScanForTargets()
@@ -45,6 +52,48 @@ public class EnemyBrain : MonoBehaviour
         }
     }
 
+    IEnumerator AnimateWalk()
+    {
+        Debug.Log("Coroutine run");
+        Vector3 oldPos = transform.position;
+
+        yield return new WaitForSeconds(.5f);
+        if (transform.position.x > 0 )
+        {
+            if (transform.position.x - oldPos.x > 0)
+            {
+                Debug.Log("Right");
+                animator.SetBool("WalkSide", true);
+                spriteRenderer.flipX = false;
+            }
+            else if (transform.position.x -  oldPos.x < 0)
+            {
+                Debug.Log("Left");
+                animator.SetBool("WalkSide", true);
+                spriteRenderer.flipX = true;
+            }
+        }else if (transform.position.x < 0)
+        {
+            if (transform.position.x - oldPos.x > 0)
+            {
+                Debug.Log("Right");
+                animator.SetBool("WalkSide", true);
+                spriteRenderer.flipX = false;
+            }
+            else if (transform.position.x - oldPos.x < 0)
+            {
+                Debug.Log("Left");
+                animator.SetBool("WalkSide", true);
+                spriteRenderer.flipX = true;
+            }
+        }
+    
+
+        StartCoroutine(AnimateWalk());
+
+    }
+
+
     void Attack()
     {
         Collider2D friend = Physics2D.OverlapCircle(transform.position, 1, friendMask);
@@ -58,7 +107,10 @@ public class EnemyBrain : MonoBehaviour
     void Kidnap(GameObject friend)
     {
         Destroy(friend);
+        animator.SetBool("WalkSide", false);
+        spriteRenderer.flipX = false;
         StartCoroutine(Rest());
+        eatFeedback.PlayFeedbacks();
     }
 
 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c53f79e468768bc49891088003dddee8
+guid: 5b1d21940c7ea0449a40a3193c171c0e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 310
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -104,232 +104,274 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: EnemyWalkRight_0
+      name: EnemyEat_0
       rect:
         serializedVersion: 2
-        x: 25
-        y: 1497
-        width: 355
-        height: 619
+        x: 43
+        y: 244
+        width: 109
+        height: 199
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a68e25fdd5f0f143be01d857fd6a99e
-      internalID: -1781501153
+      spriteID: 5319ad7e9c398b248a273913515f7a6b
+      internalID: 760825189
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyWalkRight_1
+      name: EnemyEat_1
       rect:
         serializedVersion: 2
-        x: 513
-        y: 1496
-        width: 308
-        height: 606
+        x: 253
+        y: 247
+        width: 107
+        height: 200
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de2281bc9ba1e424088fdbea1ef30981
-      internalID: -712472879
+      spriteID: ae02329eb0d6270409d3c94871701ca6
+      internalID: 905572758
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyWalkRight_2
+      name: EnemyEat_2
       rect:
         serializedVersion: 2
-        x: 953
-        y: 1499
-        width: 294
-        height: 624
+        x: 461
+        y: 249
+        width: 102
+        height: 199
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a81f003226c40f48a892b62f9baf41b
-      internalID: 92566165
+      spriteID: d2eb5aa467b8c08438a1667606530332
+      internalID: -357314672
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyWalkRight_3
+      name: EnemyEat_3
       rect:
         serializedVersion: 2
-        x: 1366
-        y: 1498
-        width: 196
-        height: 624
+        x: 658
+        y: 249
+        width: 98
+        height: 199
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48965052e75676442b0ea75aaf119d14
-      internalID: -1432335158
+      spriteID: a23140f55c0b6544cae9a9a7bd8dc7de
+      internalID: -1153817872
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyWalkRight_4
+      name: EnemyEat_4
       rect:
         serializedVersion: 2
-        x: 1734
-        y: 1498
-        width: 171
-        height: 623
+        x: 854
+        y: 249
+        width: 102
+        height: 199
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3fc34d071e172084596f066a055d39b4
-      internalID: -1795974657
+      spriteID: f5d0eb43f01208d41a5869b734a0f72d
+      internalID: -167336854
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyWalkRight_5
+      name: EnemyEat_5
       rect:
         serializedVersion: 2
-        x: 1999
-        y: 1495
-        width: 151
-        height: 634
+        x: 1049
+        y: 250
+        width: 107
+        height: 200
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e3dc8e617c1d4442b5b272a412da248
-      internalID: 1547058596
+      spriteID: 8a77c3a59deeaa14a9f394b7d15051f9
+      internalID: 91184838
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyWalkRight_6
+      name: EnemyEat_6
       rect:
         serializedVersion: 2
-        x: 91
-        y: 793
-        width: 169
-        height: 637
+        x: 1245
+        y: 248
+        width: 109
+        height: 199
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0ad0f21633f73443815740180b3b6e5
-      internalID: -2017760781
+      spriteID: 04c0fef387243e34bbfa75f72935ff80
+      internalID: 269552149
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyWalkRight_7
+      name: EnemyEat_7
       rect:
         serializedVersion: 2
-        x: 553
-        y: 788
-        width: 210
-        height: 632
+        x: 1453
+        y: 246
+        width: 100
+        height: 204
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6469c8c606c8dab47b33af5ee08a45f2
-      internalID: -192004701
+      spriteID: 3c015c8d740c2db4c8aa28e6fcb0b321
+      internalID: 431068915
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyWalkRight_8
+      name: EnemyEat_9
       rect:
         serializedVersion: 2
-        x: 972
-        y: 790
-        width: 272
-        height: 644
+        x: 1654
+        y: 245
+        width: 97
+        height: 198
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4bbefd21870b7b40a354c755c7028b2
-      internalID: 931337856
+      spriteID: 2791d367f65e7274f8ffc4d81ddd4834
+      internalID: 360204103
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyWalkRight_9
+      name: EnemyEat_10
       rect:
         serializedVersion: 2
-        x: 1316
-        y: 791
-        width: 316
-        height: 648
+        x: 1856
+        y: 248
+        width: 103
+        height: 200
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 239cce423f3ab1541a4db5d5aef35303
-      internalID: 583314910
+      spriteID: a5cc93785a8987046bd700ab724af4cb
+      internalID: 173677950
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyWalkRight_10
+      name: EnemyEat_12
       rect:
         serializedVersion: 2
-        x: 1733
-        y: 799
-        width: 322
-        height: 631
+        x: 40
+        y: 7
+        width: 106
+        height: 200
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b13c6222faf5ff48b430572fb4e609f
-      internalID: -1218561043
+      spriteID: bd4e3e64144176048b599c4b65009928
+      internalID: 2078276528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemyEat_14
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 8
+        width: 112
+        height: 202
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36072efa50e1f5c48a90335833a13611
+      internalID: -2026799943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemyEat_15
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 0
+        width: 109
+        height: 201
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63b2e7b772da8b643849f5464ef2fe07
+      internalID: 1297352938
       vertices: []
       indices: 
       edges: []
@@ -345,17 +387,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      EnemyWalkRight_3: -1432335158
-      EnemyWalkRight_9: 583314910
-      EnemyWalkRight_1: -712472879
-      EnemyWalkRight_2: 92566165
-      EnemyWalkRight_4: -1795974657
-      EnemyWalkRight_5: 1547058596
-      EnemyWalkRight_6: -2017760781
-      EnemyWalkRight_7: -192004701
-      EnemyWalkRight_10: -1218561043
-      EnemyWalkRight_8: 931337856
-      EnemyWalkRight_0: -1781501153
+      EnemyEat_14: -2026799943
+      EnemyEat_15: 1297352938
+      EnemyEat_13: -1194306899
+      EnemyEat_6: 269552149
+      EnemyEat_8: -736666712
+      EnemyEat_4: -167336854
+      EnemyEat_10: 173677950
+      EnemyEat_3: -1153817872
+      EnemyEat_7: 431068915
+      EnemyEat_5: 91184838
+      EnemyEat_12: 2078276528
+      EnemyEat_2: -357314672
+      EnemyEat_11: 373801148
+      EnemyEat_1: 905572758
+      EnemyEat_9: 360204103
+      EnemyEat_0: 760825189
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
