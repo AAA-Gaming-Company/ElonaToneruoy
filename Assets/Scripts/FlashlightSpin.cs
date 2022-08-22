@@ -1,22 +1,42 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FlashlightSpin : MonoBehaviour
 {
-    Camera cam;
+    private Camera camera;
 
     public void Start()
     {
-        cam = Camera.main;
+        camera = Camera.main;
+        RotateFlashlight();
     }
 
     void Update()
     {
-        Vector3 pos =cam.WorldToScreenPoint(transform.position);
-        Vector3 dir = Input.mousePosition - pos;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
+        if (Mathf.Abs(Input.GetAxis("Mouse X")) > 0 || Mathf.Abs(Input.GetAxis("Mouse Y")) > 0)
+        {
+            RotateFlashlight();
+        }
     }
+
+    private void RotateFlashlight()
+    {
+        Vector3 playerPos = transform.position;
+        Vector3 cameraPos = camera.transform.position;
+        cameraPos.z = playerPos.z;
+        cameraPos.y -= 1.119f; //Camera offset from the middle
+
+        Vector3 playerCameraDiff = (playerPos - cameraPos);
+
+        float angle = AngleUtils.GetAngleFromVectorFloat(GetMouseDirection(playerPos) + playerCameraDiff);
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    }
+
+    private Vector3 GetMouseDirection(Vector3 player)
+    {
+        Vector3 targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        targetPosition.z = player.z; //Just to make sure that everything is all on the same z as the player
+
+        return (targetPosition - player).normalized;
+    }
+
 }
