@@ -1,4 +1,5 @@
 using UnityEngine;
+using MoreMountains.Feedbacks;
 
 public class PlayerController : MonoBehaviour
 {
@@ -7,12 +8,17 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     Animator animator;
     SpriteRenderer spriteRenderer;
+    Camera cam;
+    public MMF_Player hitFeedback;
+    public LayerMask enemyLayers;
+    public float range;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        cam = Camera.main;
     }
 
     private void FixedUpdate()
@@ -22,6 +28,30 @@ public class PlayerController : MonoBehaviour
 
         UpdatePlayerSprite(x, y);
         rb.AddForce(new Vector2(x * playerSpeed, y * playerSpeed));
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Hit();
+            if (cam.ScreenToWorldPoint(Input.mousePosition).x > transform.position.x )
+            {
+                spriteRenderer.flipX = false;
+            }else
+            {
+                spriteRenderer.flipX = true;
+            }
+            hitFeedback.PlayFeedbacks();
+        }
+    }
+
+    void Hit()
+    {
+        animator.SetTrigger("Hit");
+        Collider2D collider = Physics2D.OverlapCircle(transform.position, range, enemyLayers);
+
+        if (collider)
+        {
+            collider.GetComponent<EnemyBrain>().StartCoroutine(collider.GetComponent<EnemyBrain>().Stun());
+        }
     }
 
     private void UpdatePlayerSprite(float x, float y)
@@ -60,5 +90,10 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isWalkingDown", false);
             animator.SetBool("isWalkingUp", false);
         }
+    }
+
+    public void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, range);
     }
 }

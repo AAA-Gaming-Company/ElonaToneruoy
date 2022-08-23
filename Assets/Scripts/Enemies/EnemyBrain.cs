@@ -15,6 +15,8 @@ public class EnemyBrain : MonoBehaviour
     private AIPath path;
     private bool canAttack = true;
 
+    public MMF_Player damageFeedback;
+
     public void Start()
     {
         aIDestinationSetter = GetComponent<AIDestinationSetter>();
@@ -113,6 +115,16 @@ public class EnemyBrain : MonoBehaviour
         yield return new WaitForSeconds(12);
         canAttack = true;
         path.canMove = true;
+    }
+
+    public IEnumerator Stun()
+    {
+        damageFeedback.PlayFeedbacks();
+        path.canMove = false;
+        canAttack = false;
+        yield return new WaitForSeconds(6);
+        path.canMove = true;
+        canAttack = true;
     }
 
     public void OnDrawGizmosSelected()
