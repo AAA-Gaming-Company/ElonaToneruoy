@@ -19,12 +19,14 @@ public class EnemySpawner : MonoBehaviour
     private Vector3 GetRandomSpawnPosition()
     {
         BoundsInt tilemapBounds = wallTilemap.cellBounds;
-        int x = Random.Range(tilemapBounds.position.x, tilemapBounds.size.x);
-        int y = Random.Range(tilemapBounds.position.y, tilemapBounds.size.y);
+
+        int x = Random.Range(tilemapBounds.position.x, tilemapBounds.position.x + tilemapBounds.size.x);
+        int y = Random.Range(tilemapBounds.position.y, tilemapBounds.position.y + tilemapBounds.size.y);
         int z = tilemapBounds.position.z;
 
         if (wallTilemap.GetTile(new Vector3Int(x, y, z)) == null)
         {
+            Debug.Log("Spawn at " + x + " " + y + " " + z);
             return new Vector3(x, y, z);
         } else
         {

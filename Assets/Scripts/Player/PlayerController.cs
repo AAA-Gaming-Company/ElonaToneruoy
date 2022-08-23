@@ -20,36 +20,45 @@ public class PlayerController : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
+        UpdatePlayerSprite(x, y);
+        rb.AddForce(new Vector2(x * playerSpeed, y * playerSpeed));
+    }
+
+    private void UpdatePlayerSprite(float x, float y)
+    {
         if (x > 0)
         {
             animator.SetBool("isWalkingSide", true);
             spriteRenderer.flipX = false;
-        } else
+
+            animator.SetBool("isWalkingDown", false);
+            animator.SetBool("isWalkingUp", false);
+            return; //Prioritise X over Y
+        } else if (x < 0)
         {
             animator.SetBool("isWalkingSide", true);
             spriteRenderer.flipX = true;
-        }
-        if (x == 0)
+
+            animator.SetBool("isWalkingDown", false);
+            animator.SetBool("isWalkingUp", false);
+            return; //Prioritise X over Y
+        } else
         {
             animator.SetBool("isWalkingSide", false);
         }
 
-
         if (y > 0)
         {
             animator.SetBool("isWalkingUp", true);
-        } else
+            animator.SetBool("isWalkingDown", false);
+        } else if (y < 0)
         {
+            animator.SetBool("isWalkingUp", false);
             animator.SetBool("isWalkingDown", true);
-        }
-        if (y == 0)
+        } else
         {
             animator.SetBool("isWalkingDown", false);
             animator.SetBool("isWalkingUp", false);
         }
-
-        Vector2 move = new Vector2(x * playerSpeed, y * playerSpeed);
-
-        rb.AddForce(move);
     }
 }

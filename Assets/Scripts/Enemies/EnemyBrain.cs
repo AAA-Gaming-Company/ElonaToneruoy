@@ -23,19 +23,14 @@ public class EnemyBrain : MonoBehaviour
         InvokeRepeating("Attack", 1f, 1f);
         StartCoroutine(AnimateWalk());
         path = GetComponent<AIPath>();
-
     }
 
     public void ScanForTargets()
     {
         Collider2D[] friends = Physics2D.OverlapCircleAll(transform.position, 200, friendMask);
 
-        Debug.Log("Scanned");
-
         if (friends.Length != 0)
         {
-
-            Debug.Log("Found");
             foreach(Collider2D friendCollider in friends)
             {
                 if (aIDestinationSetter.target)
@@ -55,7 +50,6 @@ public class EnemyBrain : MonoBehaviour
 
     IEnumerator AnimateWalk()
     {
-        Debug.Log("Coroutine run");
         Vector3 oldPos = transform.position;
 
         yield return new WaitForSeconds(0.5f);
@@ -63,12 +57,10 @@ public class EnemyBrain : MonoBehaviour
         {
             if (transform.position.x - oldPos.x > 0)
             {
-                Debug.Log("Right");
                 animator.SetBool("WalkSide", true);
                 spriteRenderer.flipX = false;
             } else if (transform.position.x - oldPos.x < 0)
             {
-                Debug.Log("Left");
                 animator.SetBool("WalkSide", true);
                 spriteRenderer.flipX = true;
             }
@@ -76,12 +68,10 @@ public class EnemyBrain : MonoBehaviour
         {
             if (transform.position.x - oldPos.x > 0)
             {
-                Debug.Log("Right");
                 animator.SetBool("WalkSide", true);
                 spriteRenderer.flipX = false;
             } else if (transform.position.x - oldPos.x < 0)
             {
-                Debug.Log("Left");
                 animator.SetBool("WalkSide", true);
                 spriteRenderer.flipX = true;
             }
@@ -92,12 +82,11 @@ public class EnemyBrain : MonoBehaviour
 
     }
 
-
     void Attack()
     {
         Collider2D friend = Physics2D.OverlapCircle(transform.position, attackRadius, friendMask);
 
-        if (friend && canAttack)
+        if (friend != null && canAttack)
         {
             Kidnap(friend.gameObject);
         }
@@ -105,13 +94,17 @@ public class EnemyBrain : MonoBehaviour
 
     void Kidnap(GameObject friend)
     {
+        if (friend == null)
+        {
+            return;
+        }
+
         Destroy(friend);
         animator.SetBool("WalkSide", false);
         spriteRenderer.flipX = false;
         StartCoroutine(Rest());
         eatFeedback.PlayFeedbacks();
     }
-
 
     IEnumerator Rest()
     {
