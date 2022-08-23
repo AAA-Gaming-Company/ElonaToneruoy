@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class FlashlightSpin : MonoBehaviour
 {
-    private Camera camera;
+    private Camera cam;
 
     public void Start()
     {
-        camera = Camera.main;
+        cam = Camera.main;
         RotateFlashlight();
     }
 
@@ -21,7 +21,7 @@ public class FlashlightSpin : MonoBehaviour
     private void RotateFlashlight()
     {
         Vector3 playerPos = transform.position;
-        Vector3 cameraPos = camera.transform.position;
+        Vector3 cameraPos = cam.transform.position;
         cameraPos.z = playerPos.z;
         cameraPos.y -= 1.119f; //Camera offset from the middle
 
@@ -33,7 +33,7 @@ public class FlashlightSpin : MonoBehaviour
 
     private Vector3 GetMouseDirection(Vector3 player)
     {
-        Vector3 targetPosition = camera.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 targetPosition = cam.ScreenToWorldPoint(Input.mousePosition);
         targetPosition.z = player.z; //Just to make sure that everything is all on the same z as the player
 
         return (targetPosition - player).normalized;

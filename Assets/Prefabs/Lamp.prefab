@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5973964829019266436}
   - component: {fileID: 6455430200340102944}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Lamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8520778368640161235}
   - component: {fileID: 8520778368640161234}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8520778370738335114}
   - component: {fileID: 8520778370738335115}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Lamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}

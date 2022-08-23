@@ -1,18 +1,19 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 using MoreMountains.Feedbacks;
 
 public class EnemyBrain : MonoBehaviour
 {
-    AIDestinationSetter aIDestinationSetter;
-    AIPath path;
-    bool canAttack = true;
     public LayerMask friendMask;
     public Animator animator;
     public SpriteRenderer spriteRenderer;
     public MMF_Player eatFeedback;
+    public float attackRadius = 1;
+
+    private AIDestinationSetter aIDestinationSetter;
+    private AIPath path;
+    private bool canAttack = true;
 
     public void Start()
     {
@@ -57,30 +58,28 @@ public class EnemyBrain : MonoBehaviour
         Debug.Log("Coroutine run");
         Vector3 oldPos = transform.position;
 
-        yield return new WaitForSeconds(.5f);
-        if (transform.position.x > 0 )
+        yield return new WaitForSeconds(0.5f);
+        if (transform.position.x > 0)
         {
             if (transform.position.x - oldPos.x > 0)
             {
                 Debug.Log("Right");
                 animator.SetBool("WalkSide", true);
                 spriteRenderer.flipX = false;
-            }
-            else if (transform.position.x -  oldPos.x < 0)
+            } else if (transform.position.x - oldPos.x < 0)
             {
                 Debug.Log("Left");
                 animator.SetBool("WalkSide", true);
                 spriteRenderer.flipX = true;
             }
-        }else if (transform.position.x < 0)
+        } else if (transform.position.x < 0)
         {
             if (transform.position.x - oldPos.x > 0)
             {
                 Debug.Log("Right");
                 animator.SetBool("WalkSide", true);
                 spriteRenderer.flipX = false;
-            }
-            else if (transform.position.x - oldPos.x < 0)
+            } else if (transform.position.x - oldPos.x < 0)
             {
                 Debug.Log("Left");
                 animator.SetBool("WalkSide", true);
@@ -96,7 +95,7 @@ public class EnemyBrain : MonoBehaviour
 
     void Attack()
     {
-        Collider2D friend = Physics2D.OverlapCircle(transform.position, 1, friendMask);
+        Collider2D friend = Physics2D.OverlapCircle(transform.position, attackRadius, friendMask);
 
         if (friend && canAttack)
         {
@@ -125,6 +124,6 @@ public class EnemyBrain : MonoBehaviour
 
     public void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(transform.position, 1);
+        Gizmos.DrawWireSphere(transform.position, attackRadius);
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1494848913022614502}
   - component: {fileID: 1494848913022614503}
   - component: {fileID: 5095745809450393790}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 1494848913431039844}
   - component: {fileID: 1494848913431039846}
   - component: {fileID: 3300954832125566722}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,3 +269,5 @@ MonoBehaviour:
     m_Bits: 2048
   animator: {fileID: 5095745809450393790}
   spriteRenderer: {fileID: 1494848913022614503}
+  eatFeedback: {fileID: 0}
+  attackRadius: 1

@@ -4,13 +4,13 @@ public class PlayerController : MonoBehaviour
 {
     public float playerSpeed;
 
-    private Rigidbody2D rigidbody;
+    private Rigidbody2D rb;
     Animator animator;
     SpriteRenderer spriteRenderer;
 
     private void Start()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isWalkingSide", true);
             spriteRenderer.flipX = false;
-        }else
+        } else
         {
             animator.SetBool("isWalkingSide", true);
             spriteRenderer.flipX = true;
@@ -38,8 +38,7 @@ public class PlayerController : MonoBehaviour
         if (y > 0)
         {
             animator.SetBool("isWalkingUp", true);
-        }
-        else
+        } else
         {
             animator.SetBool("isWalkingDown", true);
         }
@@ -51,6 +50,6 @@ public class PlayerController : MonoBehaviour
 
         Vector2 move = new Vector2(x * playerSpeed, y * playerSpeed);
 
-        rigidbody.AddForce(move);
+        rb.AddForce(move);
     }
 }

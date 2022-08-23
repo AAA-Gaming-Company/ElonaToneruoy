@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1822611467029238055}
   - component: {fileID: 1822611467029238054}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Rug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
