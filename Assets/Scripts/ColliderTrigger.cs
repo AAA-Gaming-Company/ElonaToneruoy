@@ -8,4 +8,9 @@ public class ColliderTrigger : MonoBehaviour
     {
         return identifier;
     }
+
+    public GameObject GetGameObject()
+    {
+        return gameObject;
+    }
 }

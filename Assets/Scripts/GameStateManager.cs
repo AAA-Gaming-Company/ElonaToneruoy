@@ -17,7 +17,6 @@ public class GameStateManager : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-#warning Oh yeah, oops this isn't ever called
     public void LevelComplete()
     {
         winScreen.SetActive(true);
