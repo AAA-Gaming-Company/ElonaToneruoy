@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6050151522650615899}
   - component: {fileID: 6050151522650615896}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6050151522852161003}
   - component: {fileID: 6050151522852161002}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LightParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,6 +285,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   range: 0.82
+  gameStateManager: {fileID: 0}
 --- !u!50 &6050151523410165452
 Rigidbody2D:
   serializedVersion: 4

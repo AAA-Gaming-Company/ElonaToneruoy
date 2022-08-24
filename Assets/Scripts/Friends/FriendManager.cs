@@ -11,6 +11,8 @@ public class FriendManager : MonoBehaviour
     public TextMeshProUGUI friendCounter;
     private int friendCount;
 
+    public GameStateManager gameStateManager;
+
     private void Start()
     {
         for (int i = 0; i < friendsToSpawn; i++)
@@ -34,7 +36,7 @@ public class FriendManager : MonoBehaviour
 
         if (friendCount == 0)
         {
-            Debug.LogError("You lose");
+            gameStateManager.LevelFailed();
         }
 
         yield return null;

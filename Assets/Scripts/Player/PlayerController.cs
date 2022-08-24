@@ -6,12 +6,15 @@ public class PlayerController : MonoBehaviour
     public float playerSpeed;
 
     private Rigidbody2D rb;
-    Animator animator;
-    SpriteRenderer spriteRenderer;
-    Camera cam;
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
+    private Camera cam;
+
     public MMF_Player hitFeedback;
     public LayerMask enemyLayers;
     public float range;
+
+    public GameStateManager gameStateManager;
 
     private void Start()
     {
@@ -96,5 +99,17 @@ public class PlayerController : MonoBehaviour
     public void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, range);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        ColliderTrigger trigger = collider.gameObject.GetComponent<ColliderTrigger>();
+        if (trigger != null)
+        {
+            if (trigger.GetIdentifier() == "ExitDoor")
+            {
+                gameStateManager.LevelComplete();
+            }
+        }
     }
 }
