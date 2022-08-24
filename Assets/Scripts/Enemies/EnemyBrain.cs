@@ -124,9 +124,11 @@ public class EnemyBrain : MonoBehaviour
     {
         if (!isStunned || !isStunnedInternal)
         {
+            damageFeedback.PlayFeedbacks();
             isStunnedInternal = true;
             isStunned = true;
             path.canMove = false;
+            animator.SetBool("isStunned", true);
 
             yield return stunCooldown1;
 
@@ -142,6 +144,8 @@ public class EnemyBrain : MonoBehaviour
                 }
 
                 isStunned = false;
+                animator.SetBool("isStunned", false);
+
             }
         }
     }

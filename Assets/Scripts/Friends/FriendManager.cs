@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ public class FriendManager : MonoBehaviour
     public TextMeshProUGUI friendCounter;
     private int friendCount;
 
+    public List<FriendBrain> friends = new List<FriendBrain>();
+
     public GameStateManager gameStateManager;
 
     private void Start()
@@ -21,6 +24,7 @@ public class FriendManager : MonoBehaviour
 
             FriendBrain brain = friend.GetComponent<FriendBrain>();
             brain.SetupBrain(player.transform, this);
+            friends.Add(brain);
         }
 
         friendCount = friendsToSpawn;
@@ -29,6 +33,7 @@ public class FriendManager : MonoBehaviour
 
     public IEnumerator FriendEaten(GameObject friend)
     {
+        friends.Remove(friend.GetComponent<FriendBrain>());
         Destroy(friend);
         friendCount--;
 

@@ -1,5 +1,7 @@
 using UnityEngine;
 using MoreMountains.Feedbacks;
+using System.Collections.Generic;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,7 +16,13 @@ public class PlayerController : MonoBehaviour
     public LayerMask enemyLayers;
     public float range;
 
+    public FriendManager friendManager;
     public GameStateManager gameStateManager;
+
+    public bool hasFryingPan;
+
+    public List<AudioSource> footstepSounds = new List<AudioSource>();
+    bool canPlaySound= true;
 
     private void Start()
     {
@@ -29,6 +37,12 @@ public class PlayerController : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
+        if (x != 0 || y != 0)
+        {
+            StepSound();
+            Debug.Log("sound");
+        }
+
         UpdatePlayerSprite(x, y);
         rb.AddForce(new Vector2(x * playerSpeed, y * playerSpeed));
 
@@ -42,19 +56,39 @@ public class PlayerController : MonoBehaviour
             {
                 spriteRenderer.flipX = true;
             }
-            hitFeedback.PlayFeedbacks();
+
         }
     }
 
-    void Hit()
+    public void Hit()
     {
-        animator.SetTrigger("Hit");
-        Collider2D collider = Physics2D.OverlapCircle(transform.position, range, enemyLayers);
-
-        if (collider)
+        if (hasFryingPan)
         {
-            EnemyBrain enemy = collider.GetComponent<EnemyBrain>();
-            enemy.StartCoroutine(enemy.Stun());
+            hitFeedback.PlayFeedbacks();
+            animator.SetTrigger("Hit");
+
+            foreach (FriendBrain friend in friendManager.friends)
+            {
+                friend.Hit(range, enemyLayers);
+            }
+
+            Collider2D collider = Physics2D.OverlapCircle(transform.position, range, enemyLayers);
+
+            if (collider)
+            {
+                EnemyBrain enemy = collider.GetComponent<EnemyBrain>();
+                enemy.StartCoroutine(enemy.Stun());
+            }
+        }
+      
+    }
+
+    void StepSound()
+    {
+        if (canPlaySound)
+        {
+            footstepSounds[Random.Range(0, footstepSounds.Count - 1)].Play();
+            StartCoroutine(SoundCooldown());
         }
     }
 
@@ -111,5 +145,12 @@ public class PlayerController : MonoBehaviour
                 gameStateManager.LevelComplete();
             }
         }
+    }
+
+    private IEnumerator SoundCooldown()
+    {
+        canPlaySound = false;
+        yield return new WaitForSeconds(.3f);
+        canPlaySound = true;
     }
 }
