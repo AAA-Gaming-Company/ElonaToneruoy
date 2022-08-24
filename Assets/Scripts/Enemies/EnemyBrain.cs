@@ -8,23 +8,38 @@ public class EnemyBrain : MonoBehaviour
     public LayerMask friendMask;
     public Animator animator;
     public SpriteRenderer spriteRenderer;
-    public MMF_Player eatFeedback;
     public float attackRadius = 1;
+
+    public MMF_Player damageFeedback;
+    public MMF_Player eatFeedback;
 
     private AIDestinationSetter aIDestinationSetter;
     private AIPath path;
-    private bool canAttack = true;
 
-    public MMF_Player damageFeedback;
+    private WaitForSeconds walkCooldown;
+    private WaitForSeconds restCooldown;
+    private bool isResting;
+    private WaitForSeconds stunCooldown1;
+    private WaitForSeconds stunCooldown2;
+    private bool isStunnedInternal;
+    private bool isStunned;
 
     public void Start()
     {
         aIDestinationSetter = GetComponent<AIDestinationSetter>();
         
         InvokeRepeating("ScanForTargets", 1f, 1f);
-        InvokeRepeating("Attack", 1f, 1f);
+
+        StartCoroutine(Attack());
         StartCoroutine(AnimateWalk());
         path = GetComponent<AIPath>();
+
+        walkCooldown = new WaitForSeconds(0.5f);
+        restCooldown = new WaitForSeconds(12f);
+        stunCooldown1 = new WaitForSeconds(5f);
+        stunCooldown2 = new WaitForSeconds(1f);
+        isStunned = false;
+        isStunnedInternal = false;
     }
 
     public void ScanForTargets()
@@ -50,81 +65,83 @@ public class EnemyBrain : MonoBehaviour
         }
     }
 
-    IEnumerator AnimateWalk()
+    private IEnumerator AnimateWalk()
     {
         Vector3 oldPos = transform.position;
 
-        yield return new WaitForSeconds(0.5f);
-        if (transform.position.x > 0)
+        yield return walkCooldown;
+
+        float positionDiff = transform.position.x - oldPos.x;
+
+        if (positionDiff > 0)
         {
-            if (transform.position.x - oldPos.x > 0)
-            {
-                animator.SetBool("WalkSide", true);
-                spriteRenderer.flipX = false;
-            } else if (transform.position.x - oldPos.x < 0)
-            {
-                animator.SetBool("WalkSide", true);
-                spriteRenderer.flipX = true;
-            }
-        } else if (transform.position.x < 0)
+            animator.SetBool("WalkSide", true);
+            spriteRenderer.flipX = false;
+        } else if (positionDiff < 0)
         {
-            if (transform.position.x - oldPos.x > 0)
-            {
-                animator.SetBool("WalkSide", true);
-                spriteRenderer.flipX = false;
-            } else if (transform.position.x - oldPos.x < 0)
-            {
-                animator.SetBool("WalkSide", true);
-                spriteRenderer.flipX = true;
-            }
+            animator.SetBool("WalkSide", true);
+            spriteRenderer.flipX = true;
+        } else
+        {
+            animator.SetBool("WalkSide", false);
         }
-    
 
         StartCoroutine(AnimateWalk());
 
     }
 
-    void Attack()
+    private IEnumerator Attack()
     {
-        Collider2D friend = Physics2D.OverlapCircle(transform.position, attackRadius, friendMask);
+        Collider2D friendCollider = Physics2D.OverlapCircle(transform.position, attackRadius, friendMask);
 
-        if (friend != null && canAttack)
+        if (friendCollider != null && friendCollider.gameObject != null && !isStunned && !isResting) //Make sure that the enemy isn't stunned (or already resting??? shouldn't happen)
         {
-            Kidnap(friend.gameObject);
+            isResting = true;
+            path.canMove = false;
+
+            animator.SetBool("WalkSide", false);
+            spriteRenderer.flipX = false;
+
+            Destroy(friendCollider.gameObject);
+            eatFeedback.PlayFeedbacks();
+
+            yield return restCooldown;
+
+            if (!isStunned) //Before allowing moving, check if the enemy is stunned
+            {
+                path.canMove = true;
+            }
+            isResting = false;
         }
-    }
 
-    void Kidnap(GameObject friend)
-    {
-        if (friend == null)
-        {
-            return;
-        }
-
-        Destroy(friend);
-        animator.SetBool("WalkSide", false);
-        spriteRenderer.flipX = false;
-        StartCoroutine(Rest());
-        eatFeedback.PlayFeedbacks();
-    }
-
-    IEnumerator Rest()
-    {
-        path.canMove = false;
-        canAttack = false;
-        yield return new WaitForSeconds(12);
-        canAttack = true;
-        path.canMove = true;
+        yield return null;
+        StartCoroutine(Attack());
     }
 
     public IEnumerator Stun()
     {
-        damageFeedback.PlayFeedbacks();
-        path.canMove = false;
-        canAttack = false;
-        yield return new WaitForSeconds(6);
-        path.canMove = true;
-        canAttack = true;
+        if (!isStunned || !isStunnedInternal)
+        {
+            isStunnedInternal = true;
+            isStunned = true;
+            path.canMove = false;
+
+            yield return stunCooldown1;
+
+            //Give the player a bit of time to stun again
+            isStunnedInternal = false;
+            yield return stunCooldown2;
+
+            if (!isStunnedInternal)
+            {
+                if (!isResting) //Before allowing moving, check if the enemy is resting
+                {
+                    path.canMove = true;
+                }
+
+                isStunned = false;
+            }
+        }
     }
 
     public void OnDrawGizmosSelected()

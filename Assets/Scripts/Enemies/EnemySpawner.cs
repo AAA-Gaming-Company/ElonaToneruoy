@@ -26,7 +26,6 @@ public class EnemySpawner : MonoBehaviour
 
         if (wallTilemap.GetTile(new Vector3Int(x, y, z)) == null)
         {
-            Debug.Log("Spawn at " + x + " " + y + " " + z);
             return new Vector3(x, y, z);
         } else
         {

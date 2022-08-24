@@ -32,10 +32,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Hit();
-            if (cam.ScreenToWorldPoint(Input.mousePosition).x > transform.position.x )
+            if (cam.ScreenToWorldPoint(Input.mousePosition).x > transform.position.x)
             {
                 spriteRenderer.flipX = false;
-            }else
+            } else
             {
                 spriteRenderer.flipX = true;
             }
@@ -50,7 +50,8 @@ public class PlayerController : MonoBehaviour
 
         if (collider)
         {
-            collider.GetComponent<EnemyBrain>().StartCoroutine(collider.GetComponent<EnemyBrain>().Stun());
+            EnemyBrain enemy = collider.GetComponent<EnemyBrain>();
+            enemy.StartCoroutine(enemy.Stun());
         }
     }
 
