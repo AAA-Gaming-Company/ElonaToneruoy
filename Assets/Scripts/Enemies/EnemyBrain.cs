@@ -102,7 +102,9 @@ public class EnemyBrain : MonoBehaviour
             animator.SetBool("WalkSide", false);
             spriteRenderer.flipX = false;
 
-            Destroy(friendCollider.gameObject);
+            FriendBrain friendBrain = friendCollider.gameObject.GetComponent<FriendBrain>();
+            friendBrain.GetEaten();
+
             eatFeedback.PlayFeedbacks();
 
             yield return restCooldown;

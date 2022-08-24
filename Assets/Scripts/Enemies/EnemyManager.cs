@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class EnemySpawner : MonoBehaviour
+public class EnemyManager : MonoBehaviour
 {
     public int enemiesToSpawn = 4;
     public Tilemap wallTilemap;
