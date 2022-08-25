@@ -5,6 +5,7 @@ public class EnemyManager : MonoBehaviour
 {
     public int enemiesToSpawn = 4;
     public Tilemap wallTilemap;
+    public Tilemap floorTilemap;
     public GameObject enemyPrefab;
 
     void Start()
@@ -24,9 +25,11 @@ public class EnemyManager : MonoBehaviour
         int y = Random.Range(tilemapBounds.position.y, tilemapBounds.position.y + tilemapBounds.size.y);
         int z = tilemapBounds.position.z;
 
-        if (wallTilemap.GetTile(new Vector3Int(x, y, z)) == null)
+        Vector3Int spawnPosition = new Vector3Int(x, y, z);
+
+        if (wallTilemap.GetTile(spawnPosition) == null && floorTilemap.GetTile(spawnPosition))
         {
-            return new Vector3(x, y, z);
+            return new Vector3(x + .5f, y + .5f, z);
         } else
         {
             return GetRandomSpawnPosition();
