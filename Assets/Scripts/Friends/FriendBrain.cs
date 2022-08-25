@@ -22,7 +22,7 @@ public class FriendBrain : MonoBehaviour
 
     private void SetDestination()
     {
-        path.destination = player.position + new Vector3(Random.Range(-4f, 4f), Random.Range(-2f, 2f));
+        path.destination = player.position + new Vector3(Random.Range(-2f, 2f), Random.Range(-2f, 2f));
     }
 
     private IEnumerator AnimateWalk()

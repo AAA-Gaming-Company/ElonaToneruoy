@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 97ad9fb648f895b43928ac39098b064d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -214,7 +214,7 @@ MonoBehaviour:
   radius: 1.11
   height: 0.88
   canMove: 1
-  maxSpeed: 2.2
+  maxSpeed: 2.6
   gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
