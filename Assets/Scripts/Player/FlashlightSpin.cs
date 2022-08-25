@@ -12,7 +12,7 @@ public class FlashlightSpin : MonoBehaviour
 
     void Update()
     {
-        if (Mathf.Abs(Input.GetAxis("Mouse X")) > 0 || Mathf.Abs(Input.GetAxis("Mouse Y")) > 0)
+        if (Mathf.Abs(Input.GetAxis("Mouse X")) > 0 || Mathf.Abs(Input.GetAxis("Mouse Y")) > 0 && Time.timeScale != 0)
         {
             RotateFlashlight();
         }

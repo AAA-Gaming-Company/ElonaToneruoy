@@ -40,12 +40,12 @@ public class FriendBrain : MonoBehaviour
         }
         else if (positionDiff < 0)
         {
-            animator.SetBool("IsWalkingSide", true);
+            animator.SetBool("isWalkingSide", true);
             spriteRenderer.flipX = true;
         }
         else
         {
-            animator.SetBool("WalkSide", false);
+            animator.SetBool("isWalkingSide", false);
         }
 
         StartCoroutine(AnimateWalk());
