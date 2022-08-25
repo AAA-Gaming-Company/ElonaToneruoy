@@ -39111,7 +39111,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b4caac66f74dc35478337664765aac71, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d52bd63b956147d4baa022f894a2d18f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -39220,7 +39220,7 @@ AudioHighPassFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1149267792}
   m_Enabled: 1
-  m_CutoffFrequency: 2644
+  m_CutoffFrequency: 812
   m_HighpassResonanceQ: 1
 --- !u!1 &1157530916
 GameObject:
@@ -41445,6 +41445,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 505528442, guid: 6cbacf9c39546284caf184cd565eddb5, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 687732867, guid: 6cbacf9c39546284caf184cd565eddb5, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 706321722, guid: 6cbacf9c39546284caf184cd565eddb5, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 710573437, guid: 6cbacf9c39546284caf184cd565eddb5, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1230901337, guid: 6cbacf9c39546284caf184cd565eddb5, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388932938, guid: 6cbacf9c39546284caf184cd565eddb5, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1406246055, guid: 6cbacf9c39546284caf184cd565eddb5, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843878391, guid: 6cbacf9c39546284caf184cd565eddb5, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1959648013, guid: 6cbacf9c39546284caf184cd565eddb5, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6050151523410165449, guid: 6cbacf9c39546284caf184cd565eddb5, type: 3}
       propertyPath: m_Name
       value: Player
