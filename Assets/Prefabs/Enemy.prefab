@@ -271,7 +271,7 @@ MonoBehaviour:
     m_Bits: 2048
   animator: {fileID: 5095745809450393790}
   spriteRenderer: {fileID: 1494848913022614503}
-  attackRadius: 1
+  attackRadius: 0.72
   damageFeedback: {fileID: 7155681453531111333}
   eatFeedback: {fileID: 1928904424721839963}
 --- !u!1 &3434856312260707340
