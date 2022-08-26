@@ -214,7 +214,7 @@ MonoBehaviour:
   radius: 1.11
   height: 0.88
   canMove: 1
-  maxSpeed: 2.6
+  maxSpeed: 3
   gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
