@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.Feedbacks;
 using UnityEngine.Rendering;
@@ -22,7 +20,7 @@ public class FryingPan : MonoBehaviour
 
     public void SetBlur()
     {
-        if (globalVolume.profile.TryGet<DepthOfField>(out DepthOfField depthOfField)) 
+        if (globalVolume.profile.TryGet(out DepthOfField depthOfField)) 
         {
             depthOfField.focusDistance.value = 1;
         }

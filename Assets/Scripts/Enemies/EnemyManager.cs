@@ -16,7 +16,6 @@ public class EnemyManager : MonoBehaviour
         {
             Vector3 position = GetRandomSpawnPosition();
             enemies.Add(Instantiate(enemyPrefab, position, Quaternion.identity, transform).GetComponent<EnemyBrain>());
-
         }
     }
 

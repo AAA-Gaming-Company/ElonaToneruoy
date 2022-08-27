@@ -6,11 +6,15 @@ public class GameStateManager : MonoBehaviour
     public GameObject winScreen;
     public GameObject player;
     public GameObject enemies;
+    public GameObject startScreen;
 
     private void Awake()
     {
         loseScreen.SetActive(false);
         winScreen.SetActive(false);
+        startScreen.SetActive(true);
+
+        enemies.SetActive(false);
     }
 
     public void LevelFailed()
@@ -28,13 +32,10 @@ public class GameStateManager : MonoBehaviour
         Destroy(enemies);
     }
 
-    public void Restart()
+    public void StartGame()
     {
-#warning Hihi Alex doesn't know how to do that
-    }
+        startScreen.SetActive(false);
 
-    public void NextLevel()
-    {
-#warning Alex also doesn't know how to do this
+        enemies.SetActive(true);
     }
 }
