@@ -44,7 +44,7 @@ public class EnemyBrain : MonoBehaviour
 
     public void ScanForTargets()
     {
-        Collider2D[] friends = Physics2D.OverlapCircleAll(transform.position, 200, friendMask);
+        Collider2D[] friends = Physics2D.OverlapCircleAll(transform.position, 20, friendMask);
 
         if (friends.Length != 0)
         {
@@ -152,6 +152,6 @@ public class EnemyBrain : MonoBehaviour
 
     public void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(transform.position, attackRadius);
+        Gizmos.DrawWireSphere(transform.position, 20);
     }
 }

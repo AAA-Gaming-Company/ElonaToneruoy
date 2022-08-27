@@ -4,6 +4,8 @@ public class GameStateManager : MonoBehaviour
 {
     public GameObject loseScreen;
     public GameObject winScreen;
+    public GameObject player;
+    public GameObject enemies;
 
     private void Awake()
     {
@@ -15,12 +17,15 @@ public class GameStateManager : MonoBehaviour
     {
         loseScreen.SetActive(true);
         Time.timeScale = 0f;
+        Destroy(player.GetComponent<PlayerController>());
     }
 
     public void LevelComplete()
     {
         winScreen.SetActive(true);
         Time.timeScale = 0f;
+        Destroy(player.GetComponent<PlayerController>());
+        Destroy(enemies);
     }
 
     public void Restart()

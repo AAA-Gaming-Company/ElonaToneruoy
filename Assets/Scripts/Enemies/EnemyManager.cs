@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using System.Collections.Generic;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -7,13 +8,15 @@ public class EnemyManager : MonoBehaviour
     public Tilemap wallTilemap;
     public Tilemap floorTilemap;
     public GameObject enemyPrefab;
+    public List<EnemyBrain> enemies = new List<EnemyBrain>();
 
     void Start()
     {
         for (int i = 0; i < enemiesToSpawn; i++)
         {
             Vector3 position = GetRandomSpawnPosition();
-            Instantiate(enemyPrefab, position, Quaternion.identity, transform);
+            enemies.Add(Instantiate(enemyPrefab, position, Quaternion.identity, transform).GetComponent<EnemyBrain>());
+
         }
     }
 
