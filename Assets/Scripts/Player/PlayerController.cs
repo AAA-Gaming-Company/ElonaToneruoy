@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     public bool hasFryingPan;
 
     public List<AudioSource> footstepSounds = new List<AudioSource>();
-    bool canPlaySound= true;
+    private bool canPlaySound= true;
 
     private void Start()
     {

@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: AAA Gaming Company
-  productName: Elona Tonerauy
+  productName: Elona Toneruy
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.105882354, a: 1}

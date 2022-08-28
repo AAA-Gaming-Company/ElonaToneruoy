@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
 {
+    public PlayerController playerController;
     public GameObject loseScreen;
     public GameObject winScreen;
     public GameObject player;
@@ -12,9 +13,10 @@ public class GameStateManager : MonoBehaviour
     {
         loseScreen.SetActive(false);
         winScreen.SetActive(false);
-        startScreen.SetActive(true);
 
+        startScreen.SetActive(true);
         enemies.SetActive(false);
+        playerController.enabled = false;
     }
 
     public void LevelFailed()
@@ -35,7 +37,7 @@ public class GameStateManager : MonoBehaviour
     public void StartGame()
     {
         startScreen.SetActive(false);
-
+        playerController.enabled = true;
         enemies.SetActive(true);
     }
 }
